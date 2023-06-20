@@ -16,6 +16,11 @@ public class menu extends javax.swing.JFrame {
      */
     public menu() {
         initComponents();
+        check_in.setVisible(false);
+        check_out.setVisible(false);
+        buscar.setVisible(false);
+        HistorialC.setVisible(false);
+        registros.setVisible(false);
     }
 
     /**
@@ -102,6 +107,11 @@ public class menu extends javax.swing.JFrame {
         CheckIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CheckIn.setForeground(new java.awt.Color(0, 0, 0));
         CheckIn.setText("Check-In");
+        CheckIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckInActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(CheckIn);
         CheckIn.setBounds(440, 0, 120, 40);
 
@@ -361,10 +371,20 @@ public class menu extends javax.swing.JFrame {
 
     private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
         // TODO add your handling code here:
+        check_in.setVisible(false);
+        check_out.setVisible(false);
+        buscar.setVisible(false);
+        HistorialC.setVisible(true);
+        registros.setVisible(false);
     }//GEN-LAST:event_HistorialActionPerformed
 
     private void RegistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrosActionPerformed
         // TODO add your handling code here:
+        check_in.setVisible(false);
+        check_out.setVisible(false);
+        buscar.setVisible(false);
+        HistorialC.setVisible(false);
+        registros.setVisible(true);
     }//GEN-LAST:event_RegistrosActionPerformed
 
     private void CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaActionPerformed
@@ -381,10 +401,20 @@ public class menu extends javax.swing.JFrame {
 
     private void BusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaActionPerformed
         // TODO add your handling code here:
+        check_in.setVisible(false);
+        check_out.setVisible(false);
+        buscar.setVisible(true);
+        HistorialC.setVisible(false);
+        registros.setVisible(false);
     }//GEN-LAST:event_BusquedaActionPerformed
 
     private void CheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutActionPerformed
         // TODO add your handling code here:
+        check_in.setVisible(false);
+        check_out.setVisible(true);
+        buscar.setVisible(false);
+        HistorialC.setVisible(false);
+        registros.setVisible(false);
     }//GEN-LAST:event_CheckOutActionPerformed
 
     private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
@@ -414,6 +444,15 @@ public class menu extends javax.swing.JFrame {
     private void apellido4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellido4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_apellido4ActionPerformed
+
+    private void CheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckInActionPerformed
+        // TODO add your handling code here:
+        check_in.setVisible(true);
+        check_out.setVisible(false);
+        buscar.setVisible(false);
+        HistorialC.setVisible(false);
+        registros.setVisible(false);
+    }//GEN-LAST:event_CheckInActionPerformed
 
     /**
      * @param args the command line arguments
