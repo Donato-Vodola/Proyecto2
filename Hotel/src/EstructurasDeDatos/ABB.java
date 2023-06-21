@@ -31,32 +31,41 @@ public class ABB<E> {
     }
     
     public void put(int valor) {
-       raiz = put(raiz, valor);
-        System.out.println(valor);
+        if (raiz==null) {
+           raiz = put(raiz, valor); 
+        }
+        else{
+            put(raiz,valor);
+        }
     }
     
     private NodoABB<E> put(NodoABB<E> nodo, int valor) {
         if (nodo == null) {
             nodo = new NodoABB<>(valor);
             return nodo;
-        }
-        if (valor == nodo.value) {
-            return nodo;
-        }else {
-        if (nodo.left == null) {
-            nodo.left = put(nodo.left, valor);
-        } else if (nodo.right == null) {
-            nodo.right = put(nodo.right, valor);
         }else{
-                put(nodo.left,valor);
-        }
-        }
+            if (valor == nodo.value) {
+            return nodo;
+            }else {
+        if (nodo.value > valor) {
+            if (nodo.left == null) {
+                nodo.left = put(nodo.left, valor);
+            }else{
+                put(nodo.left, valor);
+            }
+            
+        } else if (nodo.value < valor) {
+            if (nodo.right == null) {
+                nodo.right = put(nodo.right, valor);
+            }else{
+                put(nodo.right, valor);
+            }
+        }}}
         return nodo;
     }
-
+ 
     public NodoABB<E> search(int valor) {
         return search(raiz, valor);
-        
     }
     
     public NodoABB<E> search(NodoABB<E> nodo, int valor) {
@@ -87,20 +96,20 @@ public class ABB<E> {
 //        }
 //    }
 
-    public Lista<E> toListInOrden() {
-        Lista<E> lista = new Lista<>();
-        toListInOrden(raiz, lista);
-        return lista;
-    }
-
-    private void toListInOrden(NodoABB<E> nodo, Lista<E> lista) {
-        if (nodo != null) {
-            toListInOrden(nodo.left, lista);
-            
-            lista.insertarFinal(nodo.value);
-            toListInOrden(nodo.right, lista);
-        }
-    }
+//    public Lista<E> toListInOrden() {
+//        Lista<E> lista = new Lista<>();
+//        toListInOrden(raiz, lista);
+//        return lista;
+//    }
+//
+//    private void toListInOrden(NodoABB<E> nodo, Lista<E> lista) {
+//        if (nodo != null) {
+//            toListInOrden(nodo.left, lista);
+//            
+//            lista.insertarFinal(nodo.value);
+//            toListInOrden(nodo.right, lista);
+//        }
+//    }
     public void busquedas(int root){
         System.out.println("");
         inOrder(search(root));

@@ -21,6 +21,13 @@ public class Hotel {
             habitaciones.put(i);
         }
         habitaciones.busquedas(1);
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+           habitaciones.search(39).actualizarHistorial("Panita", "Juan"); 
+        }
+        
+        habitaciones.search(39).getHistorial().imprimir();
+        System.out.println("sapo");
         cargarDatos();
         inicializarRegistros();
     }
@@ -51,7 +58,7 @@ public class Hotel {
      public void CheckOut(Reserva res){
         String cliente = res.primerNombre+" "+res.segundoNombre;
          System.out.println(registroClientes.get(cliente));
-        habitaciones.search(registroClientes.get(cliente)).getHistorial().getHistorial().insertarFinal(cliente);
+        habitaciones.search(registroClientes.get(cliente)).getHistorial().insertarFinal(cliente);
         registroClientes.remove(cliente);
     }
 }

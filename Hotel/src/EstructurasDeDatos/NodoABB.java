@@ -5,23 +5,36 @@
  */
 package EstructurasDeDatos;
 
-import hotel.Habitacion;
 
 public class NodoABB<E> {
     int value;
     NodoABB<E> left;
     NodoABB<E> right;
-    Habitacion historial;
-
+    Lista<String> historial;
+    
     public NodoABB(int valor) {
         this.value = valor;
         left = right = null;
+        this.historial = historial;
     }
 
-    public Habitacion getHistorial() {
-        return historial;
+    public void setHistorial(Lista<String> historial) {
+        this.historial = historial;
     }
-
+    
+    public void actualizarHistorial(String nombre, String apellidos){
+        if (historial == null) {
+            historial = new Lista<String>();
+        }
+        historial.insertarFinal(nombre+" "+apellidos);
+    }
+    
+    public void actualizarHistorial(Lista<String> historial){
+        this.historial = historial;
+    }
+   
+    public Lista<String> getHistorial() {return historial;}
+    
     public int getValue() {
         return value;
     }
@@ -30,7 +43,6 @@ public class NodoABB<E> {
         this.value = value;
     }
     
-
     public NodoABB<E> getLeft() {
         return left;
     }
