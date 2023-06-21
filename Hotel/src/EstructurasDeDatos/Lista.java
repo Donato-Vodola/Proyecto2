@@ -19,7 +19,16 @@ public class Lista<E>
         }
         else plast = pfirst = new NodoLista(x, null);
     }
-    
+    public void insertarFinal(int x){
+        size++;
+        if(plast != null) {
+            plast.setPnext(new NodoLista(x, null));
+            plast = plast.getPnext();
+        }
+        else {
+            plast = pfirst = new NodoLista(x, null);
+        }
+    }
     public void insertarFinal(E x){
         size++;
         if(plast != null) {

@@ -5,6 +5,8 @@
  */
 package hotelPage;
 
+import hotel.Proyecto;
+
 /**
  *
  * @author donat
@@ -484,7 +486,8 @@ public class menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                new Proyecto();
+//                new menu().setVisible(true);
             }
         });
     }

@@ -4,20 +4,23 @@
  * and open the template in the editor.
  */
 package hotel;
-import EstructurasDeDatos.TablaHash;
 import EstructurasDeDatos.ABB;
+import EstructurasDeDatos.TablaHash;
 
 public class Hotel {
     private TablaHash<String, Integer> registroClientes;
     private TablaHash<Long, Reserva> reservas;
-    private Habitacion[] habitaciones;
+    private ABB habitaciones;
+    
     
     public Hotel(int numHab){
         registroClientes = new TablaHash(100); 
         reservas = new TablaHash(1000);
-        habitaciones = new Habitacion[numHab];
-        for(int i = 0; i<numHab; i++) habitaciones[i] = new Habitacion();
-        
+        habitaciones = new ABB(1);
+        for(int i = 2; i<=numHab; i++) {
+            habitaciones.put(i);
+        }
+        habitaciones.busquedas(1);
         cargarDatos();
         inicializarRegistros();
     }
@@ -38,18 +41,17 @@ public class Hotel {
         return reservas.get(cedula);
     }
     
-    public String[] historialHabitacion(int numHab){
-        return habitaciones[numHab].getHistorial().toArray();
+    public String historialHabitacion(int numHab){
+        return habitaciones.search(numHab).toString();
     }
-    
     public void CheckIn(Long cedula, Reserva res){   
-        registroClientes.put(res.primerNombre+" "+res.segundoNombre, (int) (Math.random()*habitaciones.length));
+        registroClientes.put(res.primerNombre+" "+res.segundoNombre, (int) (Math.random()*300));
         reservas.put(cedula, res);
     }
-    
      public void CheckOut(Reserva res){
         String cliente = res.primerNombre+" "+res.segundoNombre;
-        habitaciones[registroClientes.get(cliente)].getHistorial().insertarFinal(cliente);
+         System.out.println(registroClientes.get(cliente));
+        habitaciones.search(registroClientes.get(cliente)).getHistorial().getHistorial().insertarFinal(cliente);
         registroClientes.remove(cliente);
     }
 }

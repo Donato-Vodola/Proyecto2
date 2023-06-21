@@ -5,15 +5,48 @@
  */
 package EstructurasDeDatos;
 
-public class NodoABB<E extends Comparable<E>> {
-    E value;
+import hotel.Habitacion;
+
+public class NodoABB<E> {
+    int value;
     NodoABB<E> left;
     NodoABB<E> right;
+    Habitacion historial;
 
-    public NodoABB(E valor) {
+    public NodoABB(int valor) {
         this.value = valor;
-        left = null;
-        right = null;
+        left = right = null;
     }
 
+    public Habitacion getHistorial() {
+        return historial;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+    
+
+    public NodoABB<E> getLeft() {
+        return left;
+    }
+
+    public void setLeft(NodoABB<E> left) {
+        this.left = left;
+    }
+
+    public NodoABB<E> getRight() {
+        return right;
+    }
+
+    public void setRight(NodoABB<E> right) {
+        this.right = right;
+    }
+
+    
+  
 }

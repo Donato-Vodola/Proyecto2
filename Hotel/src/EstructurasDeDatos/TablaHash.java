@@ -9,7 +9,7 @@ public class TablaHash<K, V> {
     private Lista<Entrada<K, V>>[] buckets;
     private int capacity;
     private int size;
-
+ 
     public TablaHash(int capacity) {
         this.capacity = capacity;
         this.size = 0;

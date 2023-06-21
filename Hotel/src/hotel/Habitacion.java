@@ -8,7 +8,8 @@ import EstructurasDeDatos.Lista;
 
 public class Habitacion {
     private Lista<String> historial;
-
+    
+    
     public Habitacion() {
         this.historial = historial;
     }
