@@ -5,35 +5,49 @@
  */
 package EstructurasDeDatos;
 
+import java.util.Arrays;
+
 
 public class NodoABB<E> {
     int value;
     NodoABB<E> left;
     NodoABB<E> right;
     Lista<String> historial;
+    Lista<String> tipo;
     
     public NodoABB(int valor) {
         this.value = valor;
         left = right = null;
         this.historial = historial;
+        this.tipo = tipo;
     }
-
+    
+    public NodoABB(int valor, String Data1, String Data2) {
+        this.value = valor;
+        left = right = null;
+        this.historial = historial;
+        tipo = new Lista<String>();
+        this.tipo.insertarInicio(Data1);
+        this.tipo.insertarFinal(Data2);
+    }
+    
     public void setHistorial(Lista<String> historial) {
         this.historial = historial;
     }
-    
-    public void actualizarHistorial(String nombre, String apellidos){
+    public void actualizarHistorial(String ci, String nombre, String apellido, String email, String genero, String llegada){
         if (historial == null) {
             historial = new Lista<String>();
         }
-        historial.insertarFinal(nombre+" "+apellidos);
+        String data = ci + ", " + nombre + ", " + apellido + ", " + email + ", " + genero + ", " + llegada;
+        historial.insertarFinal(data);
     }
+    
+    public Lista<String> getHistorial() {return historial;}
     
     public void actualizarHistorial(Lista<String> historial){
         this.historial = historial;
     }
    
-    public Lista<String> getHistorial() {return historial;}
     
     public int getValue() {
         return value;

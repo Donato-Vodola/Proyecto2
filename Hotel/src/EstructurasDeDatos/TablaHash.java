@@ -77,6 +77,7 @@ public class TablaHash<K, V> {
     public int size() {
         return size;
     }
+
 }
 
 

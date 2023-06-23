@@ -29,8 +29,17 @@ public class ABB<E> {
     public boolean EsVacio(NodoABB nodo) {
         return nodo == null;
     }
-    
-    public void put(int valor) {
+    public void put(String valor, String dato1, String dato2) {
+        int valora = Integer.parseInt(valor);
+        NodoABB<E> nodo = new NodoABB<>(valora, dato1, dato2);
+        if (raiz==null) {
+           raiz = put(raiz, nodo); 
+        }
+        else{
+            put(raiz,nodo);
+        }
+    }
+    public void put(NodoABB<E> valor) {
         if (raiz==null) {
            raiz = put(raiz, valor); 
         }
@@ -39,22 +48,22 @@ public class ABB<E> {
         }
     }
     
-    private NodoABB<E> put(NodoABB<E> nodo, int valor) {
+    private NodoABB<E> put(NodoABB<E> nodo, NodoABB<E> valor) {
         if (nodo == null) {
-            nodo = new NodoABB<>(valor);
+            nodo = valor;
             return nodo;
         }else{
-            if (valor == nodo.value) {
+            if (valor.value == nodo.value) {
             return nodo;
             }else {
-        if (nodo.value > valor) {
+        if (nodo.value > valor.value) {
             if (nodo.left == null) {
                 nodo.left = put(nodo.left, valor);
             }else{
                 put(nodo.left, valor);
             }
             
-        } else if (nodo.value < valor) {
+        } else if (nodo.value < valor.value) {
             if (nodo.right == null) {
                 nodo.right = put(nodo.right, valor);
             }else{
