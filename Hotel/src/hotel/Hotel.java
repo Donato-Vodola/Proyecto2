@@ -38,13 +38,13 @@ public class Hotel {
                 dia = parts[8].split("/");
                 LocalDate salida = LocalDate.of(Integer.parseInt(dia[2]), Integer.parseInt(dia[1]), Integer.parseInt(dia[0]));
                 Reserva value = new Reserva(parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], llegada, salida);
-                Long cedula =  Long.parseLong(parts[0]);
+                String ci = parts[0].replace(".", "");
+                Long cedula =  Long.valueOf(ci);
                 reservas.put(cedula, value);
+                System.out.println(reservas.get(cedula) + "\n" + "cedula: " + parts[0]);
                 }
-                System.out.println(reservas.get(Long.MIN_VALUE).toString());
             }
             lector.close();
-//            num_hab,primer_nombre,apellido,email,genero,celular,llegada
             try{
             lector= new BufferedReader(new FileReader("src\\data\\estado.csv"));
             line ="";
@@ -55,22 +55,15 @@ public class Hotel {
                 String persona = parts[1] + ", " + parts[2] + ", " + parts[3] + ", " + parts[4] + ", " + parts[5] + ", " + parts[6];
                 int ci = Integer.parseInt(parts[0]);
                 registroClientes.put(persona, ci);
+                System.out.println(registroClientes.get(persona));
                 }
-                for (int i = 0; i < 300; i++) {
-                    try{
-//                        System.out.println(registroClientes.get(i));
-                    }catch(Exception e){
-                        
-                    }
-                }
-                
             }
             lector.close();
             }catch (Exception e){
-                System.out.println(e.getMessage()+ "\nTry again");
+                System.out.println(e.getMessage()+ "\nTry again1");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage()+ "\nTry again");
+            System.out.println(e.getMessage()+ "\nTry again2");
         }  
     }
     
@@ -108,10 +101,10 @@ public class Hotel {
                     }
             lector.close();            
         } catch (Exception e) {
-            System.out.println(e.getMessage()+ "\nTry again");
+            System.out.println(e.getMessage()+ "\nTry again3");
         }            
     } catch (Exception e) {
-        System.out.println(e.getMessage()+ "\nTry again");
+        System.out.println(e.getMessage()+ "\nTry again4");
     }
 }
     
