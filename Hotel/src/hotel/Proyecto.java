@@ -6,7 +6,6 @@
 package hotel;
 
 public class Proyecto {
-       public static void main(String[] args) {
-
-    }
+     Hotel h = new Hotel(300);
+    
 }

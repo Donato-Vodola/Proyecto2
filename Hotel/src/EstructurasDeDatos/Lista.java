@@ -14,7 +14,7 @@ public class Lista<E>
     
     public void insertarInicio(E x){
         size++;
-        if(pfirst != null){
+        if(!isEmpty()){
             pfirst = new NodoLista(x, pfirst);
         }
         else plast = pfirst = new NodoLista(x, null);
@@ -22,7 +22,7 @@ public class Lista<E>
     
     public void insertarFinal(E x){
         size++;
-        if(plast != null) {
+        if(!isEmpty()) {
             plast.setPnext(new NodoLista(x, null));
             plast = plast.getPnext();
         }
@@ -31,6 +31,15 @@ public class Lista<E>
         }
     }
     
+    public void ImprimirArray(){
+        try{
+           NodoLista temp = pfirst;
+            System.out.println(temp);
+           
+        }catch (Exception e){
+            
+        }
+    }
     public int size(){
         return size;
     }
@@ -65,13 +74,25 @@ public class Lista<E>
         }
         while (temp != null){
             cuenta++;
-            System.out.println(cuenta + ".,  " + temp.getElement());
+            System.out.println(cuenta + ". " + temp.getElement());
             temp = temp.getPnext();
         }
-        System.out.println(size);
-        
     }
     
+    public void imprimirArray(){
+        NodoLista temp = pfirst;
+        int cuenta = 0;
+        if (this.isEmpty()) {
+            System.out.println("Está vacía");
+        }
+        String[] sapo;
+        System.out.println("");
+        while (temp != null){
+            cuenta++;
+            System.out.println(cuenta + ". " + temp.getElement());
+            temp = temp.getPnext();
+        }
+    }
     public NodoLista getPfirst() {
         return pfirst;
     }
@@ -108,6 +129,5 @@ public class Lista<E>
         
        return Arrays.copyOf(res, size, (Class<? extends E[]>) res.getClass()); 
     }
-    
    
 }

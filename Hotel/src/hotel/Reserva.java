@@ -7,7 +7,7 @@ package hotel;
 import java.time.LocalDate;
 
 public class Reserva {
-    String primerNombre, segundoNombre, email, genero, tipo_hab, celular;
+    String ci, primerNombre, segundoNombre, email, genero, tipo_hab, celular;
     LocalDate llegada, salida;
 
     public Reserva(String primerNombre, String segundoNombre, String email, String genero, String tipo_hab, String celular, LocalDate llegada, LocalDate salida) {
@@ -23,6 +23,6 @@ public class Reserva {
     
     @Override
     public String toString() {
-        return "Reserva{\n" + "primerNombre=" + primerNombre + ", segundoNombre=" + segundoNombre + "\nemail=" + email + ", genero=" + genero + "\ntipo_hab=" + tipo_hab + ", celular=" + celular + "\nllegada=" + llegada + ", salida=" + salida + "\n}";
+        return "Reserva:\n" +"primerNombre: " + primerNombre + ", segundoNombre: " + segundoNombre + "\nemail: " + email + ", genero: " + genero + "\ntipo_hab: " + tipo_hab + ", celular: " + celular + "\nllegada: " + llegada + ", salida: " + salida + "\n";
     }
    }

@@ -22,5 +22,6 @@ public class NodoLista<E>
     public boolean equals(NodoLista<E> otro){
         return element == otro.element && ((pnext == null && otro.pnext == null) || pnext.equals(otro.pnext));
     }
+   
 }
 

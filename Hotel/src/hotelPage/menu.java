@@ -5,12 +5,22 @@
  */
 package hotelPage;
 
+
+import hotel.Hotel;
+import static hotel.Hotel.habitaciones;
+import static hotel.Hotel.registroClientes;
+import static hotel.Hotel.registronumhab;
+import static hotel.Hotel.reservas;
+import hotel.Proyecto;
+import static java.lang.String.valueOf;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author donat
  */
 public class menu extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form menu
      */
@@ -57,18 +67,19 @@ public class menu extends javax.swing.JFrame {
         apellido3 = new javax.swing.JTextField();
         HistorialC = new javax.swing.JLayeredPane();
         jLabel3 = new javax.swing.JLabel();
-        Cedula = new javax.swing.JTextField();
+        NumH = new javax.swing.JTextField();
         listoReserva = new javax.swing.JButton();
         buscar = new javax.swing.JLayeredPane();
         jLabel8 = new javax.swing.JLabel();
         Cedula1 = new javax.swing.JTextField();
         listoReserva3 = new javax.swing.JButton();
+        DataReservas = new javax.swing.JLabel();
         registros = new javax.swing.JLayeredPane();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         nombre1 = new javax.swing.JTextField();
         apellido1 = new javax.swing.JTextField();
-        listoReserva1 = new javax.swing.JButton();
+        listohab = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,7 +141,7 @@ public class menu extends javax.swing.JFrame {
         Busqueda.setBackground(new java.awt.Color(0, 255, 255));
         Busqueda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Busqueda.setForeground(new java.awt.Color(0, 0, 0));
-        Busqueda.setText("Busqueda");
+        Busqueda.setText("Reservas");
         Busqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BusquedaActionPerformed(evt);
@@ -268,22 +279,27 @@ public class menu extends javax.swing.JFrame {
         HistorialC.add(jLabel3);
         jLabel3.setBounds(50, 40, 170, 20);
 
-        Cedula.setBackground(new java.awt.Color(255, 255, 255));
-        Cedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Cedula.setForeground(new java.awt.Color(0, 0, 0));
-        Cedula.addActionListener(new java.awt.event.ActionListener() {
+        NumH.setBackground(new java.awt.Color(255, 255, 255));
+        NumH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        NumH.setForeground(new java.awt.Color(0, 0, 0));
+        NumH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CedulaActionPerformed(evt);
+                NumHActionPerformed(evt);
             }
         });
-        HistorialC.setLayer(Cedula, javax.swing.JLayeredPane.DRAG_LAYER);
-        HistorialC.add(Cedula);
-        Cedula.setBounds(220, 40, 200, 26);
+        HistorialC.setLayer(NumH, javax.swing.JLayeredPane.DRAG_LAYER);
+        HistorialC.add(NumH);
+        NumH.setBounds(220, 40, 200, 26);
 
         listoReserva.setBackground(new java.awt.Color(0, 204, 0));
         listoReserva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         listoReserva.setForeground(new java.awt.Color(0, 0, 0));
         listoReserva.setText("Buscar");
+        listoReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listoReservaActionPerformed(evt);
+            }
+        });
         HistorialC.add(listoReserva);
         listoReserva.setBounds(530, 260, 73, 26);
 
@@ -312,8 +328,15 @@ public class menu extends javax.swing.JFrame {
         listoReserva3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         listoReserva3.setForeground(new java.awt.Color(0, 0, 0));
         listoReserva3.setText("Buscar");
+        listoReserva3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listoReserva3ActionPerformed(evt);
+            }
+        });
         buscar.add(listoReserva3);
         listoReserva3.setBounds(530, 260, 73, 26);
+        buscar.add(DataReservas);
+        DataReservas.setBounds(80, 80, 430, 200);
 
         jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 640, 310));
 
@@ -352,12 +375,17 @@ public class menu extends javax.swing.JFrame {
         registros.add(apellido1);
         apellido1.setBounds(120, 80, 200, 26);
 
-        listoReserva1.setBackground(new java.awt.Color(0, 204, 0));
-        listoReserva1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        listoReserva1.setForeground(new java.awt.Color(0, 0, 0));
-        listoReserva1.setText("Buscar");
-        registros.add(listoReserva1);
-        listoReserva1.setBounds(530, 260, 73, 26);
+        listohab.setBackground(new java.awt.Color(0, 204, 0));
+        listohab.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listohab.setForeground(new java.awt.Color(0, 0, 0));
+        listohab.setText("Buscar");
+        listohab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listohabActionPerformed(evt);
+            }
+        });
+        registros.add(listohab);
+        listohab.setBounds(530, 260, 73, 26);
 
         jPanel1.add(registros, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 640, 310));
 
@@ -387,9 +415,9 @@ public class menu extends javax.swing.JFrame {
         registros.setVisible(true);
     }//GEN-LAST:event_RegistrosActionPerformed
 
-    private void CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaActionPerformed
+    private void NumHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CedulaActionPerformed
+    }//GEN-LAST:event_NumHActionPerformed
 
     private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
         // TODO add your handling code here:
@@ -454,6 +482,34 @@ public class menu extends javax.swing.JFrame {
         registros.setVisible(false);
     }//GEN-LAST:event_CheckInActionPerformed
 
+    private void listoReserva3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoReserva3ActionPerformed
+        try{
+        String ci = Cedula1.getText().replace(".", "");
+        Long cedulaB =  Long.valueOf(ci);
+        JOptionPane.showMessageDialog(null, valueOf(reservas.get(cedulaB)));
+        }catch (Exception e){
+            System.out.println(e + " coso");
+        }
+    }//GEN-LAST:event_listoReserva3ActionPerformed
+
+    private void listoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoReservaActionPerformed
+        try{
+        int habitaN =  Integer.parseInt(NumH.getText());
+        JOptionPane.showMessageDialog(null, habitaciones.search(habitaN).getHistorial());
+        }catch (Exception e){
+            System.out.println(e + " cosa");
+        }
+    }//GEN-LAST:event_listoReservaActionPerformed
+
+    private void listohabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listohabActionPerformed
+        try{
+        String habitaN =  nombre1.getText() + ", " + apellido1.getText() + "\n";
+        JOptionPane.showMessageDialog(null, registronumhab.get(habitaN));
+        }catch (Exception e){
+            System.out.println(e + " cosa");
+        }
+    }//GEN-LAST:event_listohabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -484,6 +540,7 @@ public class menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new Proyecto();
                 new menu().setVisible(true);
             }
         });
@@ -491,14 +548,15 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Busqueda;
-    private javax.swing.JTextField Cedula;
     private javax.swing.JTextField Cedula1;
     private javax.swing.JTextField Cedula2;
     private javax.swing.JTextField Cedula3;
     private javax.swing.JButton CheckIn;
     private javax.swing.JButton CheckOut;
+    private javax.swing.JLabel DataReservas;
     private javax.swing.JButton Historial;
     private javax.swing.JLayeredPane HistorialC;
+    private javax.swing.JTextField NumH;
     private javax.swing.JButton Registros;
     private javax.swing.JTextField apellido1;
     private javax.swing.JTextField apellido3;
@@ -520,10 +578,10 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listoReserva;
-    private javax.swing.JButton listoReserva1;
     private javax.swing.JButton listoReserva2;
     private javax.swing.JButton listoReserva3;
     private javax.swing.JButton listoReserva4;
+    private javax.swing.JButton listohab;
     private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombre2;
     private javax.swing.JTextField nombre3;
