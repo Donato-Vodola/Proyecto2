@@ -504,9 +504,13 @@ public class menu extends javax.swing.JFrame {
     private void listohabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listohabActionPerformed
         try{
         String habitaN =  nombre1.getText() + ", " + apellido1.getText() + "\n";
-        JOptionPane.showMessageDialog(null, registronumhab.get(habitaN));
+            if (registronumhab.get(habitaN) != null) {
+                JOptionPane.showMessageDialog(null, habitaN + " se encuentra en la habitacion numero: " +registronumhab.get(habitaN));
+            }else{
+                JOptionPane.showMessageDialog(null, " No se encuentra hospedado");
+            }
         }catch (Exception e){
-            System.out.println(e + " cosa");
+            System.out.println(e);
         }
     }//GEN-LAST:event_listohabActionPerformed
 

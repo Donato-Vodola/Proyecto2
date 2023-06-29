@@ -20,6 +20,7 @@ public class Hotel {
     
     public Hotel(int numHab){
         registroClientes = new TablaHash(300); 
+        registronumhab = new TablaHash(300); 
         reservas = new TablaHash(1000);
         habitaciones = new ABB(1);
         cargarDatos();
@@ -59,8 +60,7 @@ public class Hotel {
                 String personahab = parts[1] + ", " + parts[2] + "\n";
                 int Numh = Integer.parseInt(parts[0]);
                 registroClientes.put(persona, Numh);   
-//                registronumhab.put(personahab, Numh);
-                    System.out.println("holas1");
+                registronumhab.put(personahab, Numh);
                 }
             }
             lector.close();
