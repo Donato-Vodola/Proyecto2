@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class Hotel {
-    public static TablaHash<String, Integer> registroClientes;
+    public static TablaHash<Integer, String> registroClientes;
     public static TablaHash<String, Integer> registronumhab;
     public static TablaHash<Long, Reserva> reservas;
     public static ABB habitaciones;
@@ -57,9 +57,9 @@ public class Hotel {
                     
                 String persona = parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5] + "," + parts[6];
                     
-                String personahab = parts[1] + ", " + parts[2] + "\n";
+                String personahab = parts[1] + ", " + parts[2];
                 int Numh = Integer.parseInt(parts[0]);
-                registroClientes.put(persona, Numh);   
+                registroClientes.put(Numh, persona);
                 registronumhab.put(personahab, Numh);
                 }
             }
@@ -109,7 +109,7 @@ public class Hotel {
     
     
     public int getNumHabitacion(String nombre, String apellido){
-        return registroClientes.get(nombre+" "+apellido);
+        return registronumhab.get(nombre+" "+apellido);
     }
     
     public Reserva getReserva(Long cedula){
@@ -119,14 +119,34 @@ public class Hotel {
     public String historialHabitacion(int numHab){
         return habitaciones.search(numHab).toString();
     }
-    public void CheckIn(Long cedula, Reserva res){   
-        registroClientes.put(res.primerNombre+" "+res.segundoNombre, (int) (Math.random()*300));
-        reservas.put(cedula, res);
+    public static void CheckIn(Reserva res){   
+        int f = 0;
+        int i = 0;
+        if ("simple".equals(res.tipo_hab)) {i=1;f=100;}
+        if ("doble".equals(res.tipo_hab)) {i=101;f=224;}
+        if ("triple".equals(res.tipo_hab)) {i=225;f=265;}
+        if ("suite".equals(res.tipo_hab)) {i=266;f=300;}
+            int habit = 0;
+        for (;i <= f; i++) {
+            if (registroClientes.get(i) ==null) {
+                habit = i;
+                break;
+            }
+        }
+        if (habit !=0) {
+            String personaG = res.primerNombre + ", " + res.segundoNombre;
+            String personaC = res.primerNombre + "," + res.segundoNombre + "," + res.email + "," + res.genero + "," + res.celular + "," + res.llegada;
+            registroClientes.put(i, personaC);
+            registronumhab.put(personaG, i);
+            System.out.println(personaG);
+        }else{
+           JOptionPane.showMessageDialog(null, "No hay habitaciones disponibles"); 
+        }
     }
      public void CheckOut(Reserva res){
         String cliente = res.primerNombre+" "+res.segundoNombre;
-         System.out.println(registroClientes.get(cliente));
-        habitaciones.search(registroClientes.get(cliente)).getHistorial().insertarFinal(cliente);
-        registroClientes.remove(cliente);
+//         System.out.println(registroClientes.get(cliente));
+//        habitaciones.search(registroClientes.get(cliente)).getHistorial().insertarFinal(cliente);
+//        registroClientes.remove(cliente);
     }
 }

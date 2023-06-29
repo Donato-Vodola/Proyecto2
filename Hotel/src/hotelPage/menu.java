@@ -6,12 +6,13 @@
 package hotelPage;
 
 
-import hotel.Hotel;
+import static hotel.Hotel.CheckIn;
 import static hotel.Hotel.habitaciones;
 import static hotel.Hotel.registroClientes;
 import static hotel.Hotel.registronumhab;
 import static hotel.Hotel.reservas;
 import hotel.Proyecto;
+import hotel.Reserva;
 import static java.lang.String.valueOf;
 import javax.swing.JOptionPane;
 
@@ -62,7 +63,7 @@ public class menu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         nombre2 = new javax.swing.JTextField();
         Cedula2 = new javax.swing.JTextField();
-        listoReserva2 = new javax.swing.JButton();
+        listochein = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         apellido3 = new javax.swing.JTextField();
         HistorialC = new javax.swing.JLayeredPane();
@@ -247,12 +248,17 @@ public class menu extends javax.swing.JFrame {
         check_in.add(Cedula2);
         Cedula2.setBounds(110, 120, 200, 26);
 
-        listoReserva2.setBackground(new java.awt.Color(0, 204, 0));
-        listoReserva2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        listoReserva2.setForeground(new java.awt.Color(0, 0, 0));
-        listoReserva2.setText("Buscar");
-        check_in.add(listoReserva2);
-        listoReserva2.setBounds(530, 260, 73, 26);
+        listochein.setBackground(new java.awt.Color(0, 204, 0));
+        listochein.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listochein.setForeground(new java.awt.Color(0, 0, 0));
+        listochein.setText("Buscar");
+        listochein.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listocheinActionPerformed(evt);
+            }
+        });
+        check_in.add(listochein);
+        listochein.setBounds(530, 260, 73, 26);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Apellido: ");
@@ -503,7 +509,7 @@ public class menu extends javax.swing.JFrame {
 
     private void listohabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listohabActionPerformed
         try{
-        String habitaN =  nombre1.getText() + ", " + apellido1.getText() + "\n";
+        String habitaN =  nombre1.getText() + ", " + apellido1.getText();
             if (registronumhab.get(habitaN) != null) {
                 JOptionPane.showMessageDialog(null, habitaN + " se encuentra en la habitacion numero: " +registronumhab.get(habitaN));
             }else{
@@ -513,6 +519,20 @@ public class menu extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_listohabActionPerformed
+
+    private void listocheinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listocheinActionPerformed
+        String ci = Cedula2.getText().replace(".", "");
+        
+        Long cedulaB =  Long.valueOf(ci);
+        if (reservas.get(cedulaB) != null) {
+            JOptionPane.showMessageDialog(null, valueOf(reservas.get(cedulaB)) + " papapappapapa");  
+            CheckIn(reservas.get(cedulaB));
+            reservas.remove(cedulaB);
+        }else{
+          JOptionPane.showMessageDialog(null, "No se encontro la reservacion");  
+        }
+        
+    }//GEN-LAST:event_listocheinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -582,9 +602,9 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listoReserva;
-    private javax.swing.JButton listoReserva2;
     private javax.swing.JButton listoReserva3;
     private javax.swing.JButton listoReserva4;
+    private javax.swing.JButton listochein;
     private javax.swing.JButton listohab;
     private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombre2;
