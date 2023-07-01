@@ -52,21 +52,15 @@ public class menu extends javax.swing.JFrame {
         Historial = new javax.swing.JButton();
         Busqueda = new javax.swing.JButton();
         check_out = new javax.swing.JLayeredPane();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         nombre3 = new javax.swing.JTextField();
-        Cedula3 = new javax.swing.JTextField();
         buscacheckout = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         apellido4 = new javax.swing.JTextField();
         check_in = new javax.swing.JLayeredPane();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        nombre2 = new javax.swing.JTextField();
         Cedula2 = new javax.swing.JTextField();
         listochein = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        apellido3 = new javax.swing.JTextField();
         HistorialC = new javax.swing.JLayeredPane();
         jLabel3 = new javax.swing.JLabel();
         NumH = new javax.swing.JTextField();
@@ -156,11 +150,6 @@ public class menu extends javax.swing.JFrame {
 
         check_out.setOpaque(true);
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Numero de Habitacion: ");
-        check_out.add(jLabel10);
-        jLabel10.setBounds(40, 120, 170, 20);
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Nombre: ");
         check_out.add(jLabel11);
@@ -176,18 +165,7 @@ public class menu extends javax.swing.JFrame {
         });
         check_out.setLayer(nombre3, javax.swing.JLayeredPane.DRAG_LAYER);
         check_out.add(nombre3);
-        nombre3.setBounds(120, 40, 200, 26);
-
-        Cedula3.setBackground(new java.awt.Color(255, 255, 255));
-        Cedula3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Cedula3.setForeground(new java.awt.Color(0, 0, 0));
-        Cedula3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cedula3ActionPerformed(evt);
-            }
-        });
-        check_out.add(Cedula3);
-        Cedula3.setBounds(200, 120, 200, 26);
+        nombre3.setBounds(120, 30, 200, 30);
 
         buscacheckout.setBackground(new java.awt.Color(0, 204, 0));
         buscacheckout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -215,7 +193,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         check_out.add(apellido4);
-        apellido4.setBounds(120, 80, 200, 26);
+        apellido4.setBounds(120, 70, 200, 30);
 
         jPanel1.add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 640, 310));
 
@@ -224,24 +202,7 @@ public class menu extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Cedula: ");
         check_in.add(jLabel6);
-        jLabel6.setBounds(40, 120, 70, 20);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Nombre: ");
-        check_in.add(jLabel7);
-        jLabel7.setBounds(40, 40, 70, 20);
-
-        nombre2.setBackground(new java.awt.Color(255, 255, 255));
-        nombre2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombre2.setForeground(new java.awt.Color(0, 0, 0));
-        nombre2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre2ActionPerformed(evt);
-            }
-        });
-        check_in.setLayer(nombre2, javax.swing.JLayeredPane.DRAG_LAYER);
-        check_in.add(nombre2);
-        nombre2.setBounds(120, 40, 200, 26);
+        jLabel6.setBounds(40, 50, 70, 20);
 
         Cedula2.setBackground(new java.awt.Color(255, 255, 255));
         Cedula2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -252,7 +213,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         check_in.add(Cedula2);
-        Cedula2.setBounds(110, 120, 200, 26);
+        Cedula2.setBounds(110, 46, 200, 30);
 
         listochein.setBackground(new java.awt.Color(0, 204, 0));
         listochein.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -265,22 +226,6 @@ public class menu extends javax.swing.JFrame {
         });
         check_in.add(listochein);
         listochein.setBounds(530, 260, 73, 26);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Apellido: ");
-        check_in.add(jLabel9);
-        jLabel9.setBounds(40, 80, 70, 20);
-
-        apellido3.setBackground(new java.awt.Color(255, 255, 255));
-        apellido3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        apellido3.setForeground(new java.awt.Color(0, 0, 0));
-        apellido3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellido3ActionPerformed(evt);
-            }
-        });
-        check_in.add(apellido3);
-        apellido3.setBounds(120, 80, 200, 26);
 
         jPanel1.add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 640, 310));
 
@@ -334,7 +279,7 @@ public class menu extends javax.swing.JFrame {
         });
         buscar.setLayer(Cedula1, javax.swing.JLayeredPane.DRAG_LAYER);
         buscar.add(Cedula1);
-        Cedula1.setBounds(110, 40, 200, 26);
+        Cedula1.setBounds(110, 36, 200, 30);
 
         listoReserva3.setBackground(new java.awt.Color(0, 204, 0));
         listoReserva3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -374,7 +319,7 @@ public class menu extends javax.swing.JFrame {
         });
         registros.setLayer(nombre1, javax.swing.JLayeredPane.DRAG_LAYER);
         registros.add(nombre1);
-        nombre1.setBounds(120, 40, 200, 26);
+        nombre1.setBounds(120, 30, 200, 30);
 
         apellido1.setBackground(new java.awt.Color(255, 255, 255));
         apellido1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -385,7 +330,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
         registros.add(apellido1);
-        apellido1.setBounds(120, 80, 200, 26);
+        apellido1.setBounds(120, 76, 200, 30);
 
         listohab.setBackground(new java.awt.Color(0, 204, 0));
         listohab.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -457,10 +402,6 @@ public class menu extends javax.swing.JFrame {
         registros.setVisible(false);
     }//GEN-LAST:event_CheckOutActionPerformed
 
-    private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre2ActionPerformed
-
     private void Cedula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cedula2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cedula2ActionPerformed
@@ -469,17 +410,9 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Cedula1ActionPerformed
 
-    private void apellido3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellido3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apellido3ActionPerformed
-
     private void nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombre3ActionPerformed
-
-    private void Cedula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cedula3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cedula3ActionPerformed
 
     private void apellido4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellido4ActionPerformed
         // TODO add your handling code here:
@@ -539,10 +472,13 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_listocheinActionPerformed
 
     private void buscacheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscacheckoutActionPerformed
+        try{
         String habitaN = nombre3.getText() + ", " + apellido4.getText();
         registronumhab.get(habitaN);
         CheckOut(registronumhab.get(habitaN));
-        
+        }catch (Exception e){
+            
+        }
     }//GEN-LAST:event_buscacheckoutActionPerformed
 
     /**
@@ -585,7 +521,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton Busqueda;
     private javax.swing.JTextField Cedula1;
     private javax.swing.JTextField Cedula2;
-    private javax.swing.JTextField Cedula3;
     private javax.swing.JButton CheckIn;
     private javax.swing.JButton CheckOut;
     private javax.swing.JLabel DataReservas;
@@ -594,23 +529,19 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField NumH;
     private javax.swing.JButton Registros;
     private javax.swing.JTextField apellido1;
-    private javax.swing.JTextField apellido3;
     private javax.swing.JTextField apellido4;
     private javax.swing.JButton buscacheckout;
     private javax.swing.JLayeredPane buscar;
     private javax.swing.JLayeredPane check_in;
     private javax.swing.JLayeredPane check_out;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listoReserva;
@@ -618,7 +549,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton listochein;
     private javax.swing.JButton listohab;
     private javax.swing.JTextField nombre1;
-    private javax.swing.JTextField nombre2;
     private javax.swing.JTextField nombre3;
     private javax.swing.JLayeredPane registros;
     // End of variables declaration//GEN-END:variables

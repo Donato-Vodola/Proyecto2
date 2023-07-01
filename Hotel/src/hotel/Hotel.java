@@ -142,7 +142,6 @@ public class Hotel {
             String personaC = res.primerNombre + "," + res.segundoNombre + "," + res.email + "," + res.genero + "," + res.celular + "," + res.llegada;
             registroClientes.put(i, personaC);
             registronumhab.put(personaG, i);
-            System.out.println(personaG);
         }else{
            JOptionPane.showMessageDialog(null, "No hay habitaciones disponibles"); 
         }
@@ -153,12 +152,16 @@ public class Hotel {
         String persona = registroClientes.get(hab);
         String[] parts = persona.split(",");
         String num = parts[4];
+        String personahab = parts[0] + ", " + parts[1];
+        registroClientes.remove(hab);
+        registronumhab.remove(personahab);
         if (reservashistorico.get(num) != null) {
             Reserva res = reservashistorico.get(num);
             reservas.remove(Long.valueOf(Integer.toString(res.ci)));
-            habitaciones.search(Integer.parseInt(parts[6])).actualizarHistorial(Integer.toString(res.ci), res.primerNombre, res.segundoNombre, res.email, res.genero, res.llegada.toString());
+            habitaciones.search(hab).actualizarHistorial(Integer.toString(res.ci), res.primerNombre, res.segundoNombre, res.email, res.genero, res.llegada.toString());
         }
-        registroClientes.remove(hab);
-        registronumhab.remove(num);
+        
     }
 }
+//          <Integer, String> registroClientes;
+//          <String, Integer> registronumhab;
