@@ -463,11 +463,11 @@ public class menu extends javax.swing.JFrame {
         String ci = Cedula2.getText().replace(".", "");
         Long cedulaB =  Long.valueOf(ci);
         if (reservas.get(cedulaB) != null) {
-            JOptionPane.showMessageDialog(null, valueOf(reservas.get(cedulaB)) + " papapappapapa");  
+            JOptionPane.showMessageDialog(null, valueOf(reservas.get(cedulaB)));
             CheckIn(reservas.get(cedulaB));
             reservas.remove(cedulaB);
         }else{
-          JOptionPane.showMessageDialog(null, "No se encontro la reservacion");  
+          JOptionPane.showMessageDialog(null, "No se encontro la reservacion");
         }
     }//GEN-LAST:event_listocheinActionPerformed
 
@@ -476,6 +476,7 @@ public class menu extends javax.swing.JFrame {
         String habitaN = nombre3.getText() + ", " + apellido4.getText();
         registronumhab.get(habitaN);
         CheckOut(registronumhab.get(habitaN));
+        JOptionPane.showMessageDialog(null, "Hasta luego " + habitaN);
         }catch (Exception e){
             
         }
