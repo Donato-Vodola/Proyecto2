@@ -13,22 +13,11 @@ public class NodoABB<E> {
     NodoABB<E> left;
     NodoABB<E> right;
     Lista<String> historial;
-    Lista<String> tipo;
     
     public NodoABB(int valor) {
         this.value = valor;
         left = right = null;
         this.historial = historial;
-        this.tipo = tipo;
-    }
-    
-    public NodoABB(int valor, String Data1, String Data2) {
-        this.value = valor;
-        left = right = null;
-        this.historial = historial;
-        tipo = new Lista<String>();
-        this.tipo.insertarInicio(Data1);
-        this.tipo.insertarFinal(Data2);
     }
     
     public void setHistorial(Lista<String> historial) {

@@ -15,19 +15,21 @@ public class Hotel {
     public static TablaHash<Integer, String> registroClientes;
     public static TablaHash<String, Integer> registronumhab;
     public static TablaHash<Long, Reserva> reservas;
+    public static TablaHash<String, Reserva> reservashistorico;
     public static ABB habitaciones;
-    
     
     public Hotel(int numHab){
         registroClientes = new TablaHash(300); 
         registronumhab = new TablaHash(300); 
         reservas = new TablaHash(1000);
-        habitaciones = new ABB(1);
+        reservashistorico = new TablaHash(1000);
+        habitaciones = new ABB(150);
         cargarDatos();
         inicializarRegistros();
     }
+    
     private void inicializarRegistros(){
-        //Inicializarlo con los clientes actuales;
+        //Inicializarlo con los clientes actuales
         try {
             BufferedReader lector= new BufferedReader(new FileReader("src\\data\\reservas.csv"));
             String line ="";
@@ -43,6 +45,9 @@ public class Hotel {
                 String ci = parts[0].replace(".", "");
                 Long cedula =  Long.valueOf(ci);
                 reservas.put(cedula, value);
+                int ce = Integer.parseInt(ci);
+                Reserva valueci = new Reserva(ce, parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], llegada, salida);
+                reservashistorico.put(parts[6], valueci);
                 }
             }
             lector.close();
@@ -81,7 +86,7 @@ public class Hotel {
             while ((line= lector.readLine()) !=null) {
                 if (!line.equals("")) {
                 String[] parts = line.split(",");
-                habitaciones.put(parts[0],parts[1],parts[2]);
+                habitaciones.put(parts[0]);
                 }
             }
             lector.close();
@@ -104,9 +109,7 @@ public class Hotel {
     } catch (Exception e) {
         System.out.println(e.getMessage()+ "\nTry again4");
     }
-}
-    
-    
+    }
     
     public int getNumHabitacion(String nombre, String apellido){
         return registronumhab.get(nombre+" "+apellido);
@@ -119,6 +122,7 @@ public class Hotel {
     public String historialHabitacion(int numHab){
         return habitaciones.search(numHab).toString();
     }
+    
     public static void CheckIn(Reserva res){   
         int f = 0;
         int i = 0;
@@ -126,7 +130,7 @@ public class Hotel {
         if ("doble".equals(res.tipo_hab)) {i=101;f=224;}
         if ("triple".equals(res.tipo_hab)) {i=225;f=265;}
         if ("suite".equals(res.tipo_hab)) {i=266;f=300;}
-            int habit = 0;
+        int habit = 0;
         for (;i <= f; i++) {
             if (registroClientes.get(i) ==null) {
                 habit = i;
@@ -143,10 +147,18 @@ public class Hotel {
            JOptionPane.showMessageDialog(null, "No hay habitaciones disponibles"); 
         }
     }
-     public void CheckOut(Reserva res){
-        String cliente = res.primerNombre+" "+res.segundoNombre;
-//         System.out.println(registroClientes.get(cliente));
-//        habitaciones.search(registroClientes.get(cliente)).getHistorial().insertarFinal(cliente);
-//        registroClientes.remove(cliente);
+    
+     public static void CheckOut(int hab){
+//       ci,primer_nombre,apellido,email,genero,llegada,num_hab
+        String persona = registroClientes.get(hab);
+        String[] parts = persona.split(",");
+        String num = parts[4];
+        if (reservashistorico.get(num) != null) {
+            Reserva res = reservashistorico.get(num);
+            reservas.remove(Long.valueOf(Integer.toString(res.ci)));
+            habitaciones.search(Integer.parseInt(parts[6])).actualizarHistorial(Integer.toString(res.ci), res.primerNombre, res.segundoNombre, res.email, res.genero, res.llegada.toString());
+        }
+        registroClientes.remove(hab);
+        registronumhab.remove(num);
     }
 }

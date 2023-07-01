@@ -29,9 +29,9 @@ public class ABB<E> {
     public boolean EsVacio(NodoABB nodo) {
         return nodo == null;
     }
-    public void put(String valor, String dato1, String dato2) {
+    public void put(String valor) {
         int valora = Integer.parseInt(valor);
-        NodoABB<E> nodo = new NodoABB<>(valora, dato1, dato2);
+        NodoABB<E> nodo = new NodoABB<>(valora);
         if (raiz==null) {
            raiz = put(raiz, nodo); 
         }

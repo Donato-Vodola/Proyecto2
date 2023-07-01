@@ -7,6 +7,7 @@ package hotelPage;
 
 
 import static hotel.Hotel.CheckIn;
+import static hotel.Hotel.CheckOut;
 import static hotel.Hotel.habitaciones;
 import static hotel.Hotel.registroClientes;
 import static hotel.Hotel.registronumhab;
@@ -55,7 +56,7 @@ public class menu extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         nombre3 = new javax.swing.JTextField();
         Cedula3 = new javax.swing.JTextField();
-        listoReserva4 = new javax.swing.JButton();
+        buscacheckout = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         apellido4 = new javax.swing.JTextField();
         check_in = new javax.swing.JLayeredPane();
@@ -188,12 +189,17 @@ public class menu extends javax.swing.JFrame {
         check_out.add(Cedula3);
         Cedula3.setBounds(200, 120, 200, 26);
 
-        listoReserva4.setBackground(new java.awt.Color(0, 204, 0));
-        listoReserva4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        listoReserva4.setForeground(new java.awt.Color(0, 0, 0));
-        listoReserva4.setText("Buscar");
-        check_out.add(listoReserva4);
-        listoReserva4.setBounds(530, 260, 73, 26);
+        buscacheckout.setBackground(new java.awt.Color(0, 204, 0));
+        buscacheckout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buscacheckout.setForeground(new java.awt.Color(0, 0, 0));
+        buscacheckout.setText("Buscar");
+        buscacheckout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscacheckoutActionPerformed(evt);
+            }
+        });
+        check_out.add(buscacheckout);
+        buscacheckout.setBounds(530, 260, 73, 26);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Apellido: ");
@@ -522,7 +528,6 @@ public class menu extends javax.swing.JFrame {
 
     private void listocheinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listocheinActionPerformed
         String ci = Cedula2.getText().replace(".", "");
-        
         Long cedulaB =  Long.valueOf(ci);
         if (reservas.get(cedulaB) != null) {
             JOptionPane.showMessageDialog(null, valueOf(reservas.get(cedulaB)) + " papapappapapa");  
@@ -531,8 +536,14 @@ public class menu extends javax.swing.JFrame {
         }else{
           JOptionPane.showMessageDialog(null, "No se encontro la reservacion");  
         }
-        
     }//GEN-LAST:event_listocheinActionPerformed
+
+    private void buscacheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscacheckoutActionPerformed
+        String habitaN = nombre3.getText() + ", " + apellido4.getText();
+        registronumhab.get(habitaN);
+        CheckOut(registronumhab.get(habitaN));
+        
+    }//GEN-LAST:event_buscacheckoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -585,6 +596,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField apellido1;
     private javax.swing.JTextField apellido3;
     private javax.swing.JTextField apellido4;
+    private javax.swing.JButton buscacheckout;
     private javax.swing.JLayeredPane buscar;
     private javax.swing.JLayeredPane check_in;
     private javax.swing.JLayeredPane check_out;
@@ -603,7 +615,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listoReserva;
     private javax.swing.JButton listoReserva3;
-    private javax.swing.JButton listoReserva4;
     private javax.swing.JButton listochein;
     private javax.swing.JButton listohab;
     private javax.swing.JTextField nombre1;
