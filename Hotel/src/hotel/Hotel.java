@@ -5,17 +5,21 @@
  */
 package hotel;
 import EstructurasDeDatos.ABB;
+import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.TablaHash;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class Hotel {
-    public static TablaHash<Integer, String> registroClientes;
+    public static TablaHash<Integer, String> registroClientes;//
     public static TablaHash<String, Integer> registronumhab;
-    public static TablaHash<Long, Reserva> reservas;
-    public static TablaHash<String, Reserva> reservashistorico;
+    public static TablaHash<Long, Reserva> reservas;//
+    public static TablaHash<String, Reserva> reservashistorico;//
     public static ABB habitaciones;
     
     public Hotel(int numHab){
@@ -75,11 +79,7 @@ public class Hotel {
         } catch (Exception e) {
             System.out.println(e.getMessage()+ "\nTry again2");
         }  
-    }
-    
-    private void cargarDatos() {
-        //Cargar los datos de la tabla de excel en reservas;
-    try {
+        try {
             BufferedReader lector= new BufferedReader(new FileReader("src\\data\\habitaciones.csv"));
             String line ="";
             if(lector.readLine() !=null);
@@ -109,6 +109,11 @@ public class Hotel {
     } catch (Exception e) {
         System.out.println(e.getMessage()+ "\nTry again4");
     }
+    }
+    
+    private void cargarDatos() {
+        //Cargar los datos de la tabla de excel en reservas;
+    
     }
     
     public int getNumHabitacion(String nombre, String apellido){
@@ -148,7 +153,6 @@ public class Hotel {
     }
     
      public static void CheckOut(int hab){
-//       ci,primer_nombre,apellido,email,genero,llegada,num_hab
         String persona = registroClientes.get(hab);
         String[] parts = persona.split(",");
         String num = parts[4];
@@ -162,6 +166,5 @@ public class Hotel {
         }
         
     }
+     
 }
-//          <Integer, String> registroClientes;
-//          <String, Integer> registronumhab;
